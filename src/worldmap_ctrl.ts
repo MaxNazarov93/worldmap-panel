@@ -6,7 +6,9 @@ import * as _ from "lodash";
 import DataFormatter from "./data_formatter";
 import "./css/worldmap-panel.css";
 import $ from "jquery";
-import "./css/leaflet.css";
+import "leaflet/dist/leaflet.css";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import WorldMap from "./worldmap";
 
 const panelDefaults = {

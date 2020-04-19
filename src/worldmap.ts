@@ -1,5 +1,6 @@
 import * as _ from 'lodash';
-import * as L from './libs/leaflet';
+import L from 'leaflet';
+import 'leaflet.markercluster';
 import WorldmapCtrl from './worldmap_ctrl';
 
 const tileServers = {
@@ -242,7 +243,11 @@ export default class WorldMap {
   }
 
   addCircles(circles) {
-    return (<any>window).L.layerGroup(circles).addTo(this.map);
+    let markerGroup = L.markerClusterGroup();
+    _.forEach(circles, circle => {
+      markerGroup.addLayer(circle)
+    });
+    return markerGroup.addTo(this.map);
   }
 
   removeCircles() {
