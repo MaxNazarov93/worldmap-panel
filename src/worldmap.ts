@@ -243,11 +243,15 @@ export default class WorldMap {
   }
 
   addCircles(circles) {
-    let markerGroup = L.markerClusterGroup();
-    _.forEach(circles, circle => {
-      markerGroup.addLayer(circle)
-    });
-    return markerGroup.addTo(this.map);
+    if (this.ctrl.panel.clusterAssemble) {
+      let markerGroup = L.markerClusterGroup();
+      _.forEach(circles, circle => {
+        markerGroup.addLayer(circle)
+      });
+      return markerGroup.addTo(this.map);
+    } else {
+      return (<any>window).L.layerGroup(circles).addTo(this.map);
+    }
   }
 
   removeCircles() {

@@ -30,6 +30,7 @@ const panelDefaults = {
   unitSingle: "",
   unitPlural: "",
   showLegend: true,
+  clusterAssemble: false,
   mouseWheelZoom: false,
   esMetric: "Count",
   decimals: 0,
@@ -268,6 +269,11 @@ export default class WorldmapCtrl extends MetricsPanelCtrl {
   }
 
   toggleStickyLabels() {
+    this.map.clearCircles();
+    this.render();
+  }
+
+  toggleClusterAssemble() {
     this.map.clearCircles();
     this.render();
   }
